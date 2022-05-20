@@ -1,0 +1,139 @@
+// Chandrasiri D.K.W.G.G.T
+// IT21486326
+
+
+// cart.h
+
+#pragma once
+#include "Product.h"
+#define SIZE 2
+
+class ShoppingCart
+{
+private:
+	int CusID;
+	float UnitPrice;
+	int Qty;
+	Product* Pr[SIZE];
+
+public:
+	ShoppingCart();
+	ShoppingCart(int pCusID, float pUnitPrice, int pQty, Product* Pr1, Product* Pr2);
+	void DisplayCartDetails();
+	void UpdateQuantity();
+	float CalcTotal();
+	void Checkout();
+	~ShoppingCart();
+};
+
+
+
+
+
+// cart.cpp
+
+#include "ShoppingCart.h"
+#include <iostream>
+using namespace std;
+
+ShoppingCart::ShoppingCart()
+{
+	CusID = 0;
+	UnitPrice = 0;
+	Qty = 0;
+}
+
+ShoppingCart::ShoppingCart(int pCusID, float pUnitPrice, int pQty, Product* Pr1, Product* Pr2)
+{
+	CusID = pCusID;
+	UnitPrice = pUnitPrice;
+	Qty = pQty;
+	Pr[0] = Pr1;
+	Pr[1] = Pr2;
+}
+
+void ShoppingCart::DisplayCartDetails()
+{
+}
+
+void ShoppingCart::UpdateQuantity()
+{
+}
+
+float ShoppingCart::CalcTotal()
+{
+	return 0.0f;
+}
+
+void ShoppingCart::Checkout()
+{
+}
+
+ShoppingCart::~ShoppingCart()
+{
+	cout << "deleting shoping cart" << endl;
+}
+
+
+
+
+
+// main.cpp
+
+#include "User.h"
+#include "Guest.h"
+#include "RegisteredCustomer.h"
+#include "Shop.h"
+#include "Product.h"
+#include "Order.h"
+#include "ShoppingCart.h"
+#include "Payment.h"
+#include "Report.h"
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	//object creation
+	Guest* guest = new Guest();		//object-Guest class
+	RegisteredCustomer* rg = new RegisteredCustomer();		//object-RegisteredCustomer class
+	Shop* shop = new Shop();		//object-Shop class
+	Product* product = new Product();		//object- Product class
+	Order* order = new Order();		//object- Order class
+	ShoppingCart* cart = new ShoppingCart();		//object- Shopping class
+	Payment* payment = new Payment();		//object- Payment class
+	Report* report = new Report();		//object- Report class
+
+	//method calling
+	guest->SearchProduct();
+
+	rg->Login();
+	rg->Logout();
+
+	shop->DisplayShopDetails();
+
+	product->DisplayProductDetails();
+
+	order->DisplayOrder();
+
+	cart->DisplayCartDetails();
+	cart->DisplayCartDetails();
+	cart->UpdateQuantity();
+	cart->CalcTotal();
+
+	payment->DisplayPaymentDetails();
+
+	report->PreviousOrderReport();
+	report->PaymentReport();
+
+	//Delete dynamic objects
+	delete guest;
+	delete rg;
+	delete shop;
+	delete product;
+	delete order;
+	delete cart;
+	delete payment;
+	delete report;
+
+}
