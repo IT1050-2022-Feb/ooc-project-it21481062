@@ -1,0 +1,121 @@
+//Thamindu Navojith
+//IT21489464
+
+//Shop.h
+
+#pragma once
+#include "Guest.h"
+#include "Product.h"
+#include "registeredCustomer.h"
+#define SIZE 2
+class Shop
+{
+private:
+	int ShopID;
+	char ShopName[10];
+	char ShopCat[10];
+	RegisteredCustomer*rg[SIZE];
+	Guest* Gt[SIZE];
+	Product* Pr[SIZE];
+	
+
+public:
+	Shop();
+	Shop(int pShopID, const char pShopName[], const char pShopCat[], RegisteredCustomer* rg1, RegisteredCustomer* rg2,
+		Guest* Gt1, Guest* Gt2, Product* Pr1, Product* Pr2);
+	void DisplayShopDetails();
+	~Shop();
+};
+
+//Shop.cpp
+
+#include "Shop.h"
+#include <cstring>
+#include <iostream>
+using namespace std;
+Shop::Shop()
+{
+	ShopID = 0;
+	strcpy_s(ShopName, "");
+	strcpy_s(ShopCat, "");
+}
+
+Shop::Shop(int pShopID, const char pShopName[], const char pShopCat[], RegisteredCustomer* rg1, RegisteredCustomer* rg2,
+	Guest* Gt1, Guest* Gt2, Product* Pr1, Product* Pr2)
+{
+	ShopID = pShopID;
+	strcpy_s(ShopName, pShopName);
+	strcpy_s(ShopCat, pShopCat);
+	rg[0] = rg1;
+	rg[1] = rg2;
+	Gt[0] = Gt1;
+	Gt[1] = Gt2;
+	Pr[0] = Pr1;
+	Pr[1] = Pr2;
+}
+
+
+
+void Shop::DisplayShopDetails()
+{
+
+}
+
+Shop::~Shop()
+{
+	cout << "Delete Shop" << endl;
+}
+
+//Order.h
+
+#pragma once
+#include "Product.h"
+#include "registeredCustomer.h"
+#include "Payment.h"
+#define SIZE 2
+class Order
+{
+private:
+	int OrderID;
+	char date[10];
+	RegisteredCustomer* Rg;
+	Payment* pay;
+	Product* Pr[SIZE];
+
+public:
+	Order();
+	Order(int pOrderID, const char pdate[], RegisteredCustomer* pRg,Payment* ppay, Product* Pr1, Product* Pr2);
+	void DisplayOrder();
+	~Order();
+};
+
+//Order.cpp
+
+#include "Order.h"
+#include <cstring>
+#include <iostream>
+using namespace std;
+Order::Order()
+{
+	OrderID = 0;
+	strcpy_s(date, "");
+}
+
+Order::Order(int pOrderID, const char pdate[], RegisteredCustomer* pRg, Payment* ppay, Product* Pr1, Product* Pr2)
+{
+	OrderID = 0;
+	strcpy_s(date, "");
+	Rg = pRg;
+	pay = ppay;
+	Pr[0] = Pr1;
+	Pr[0] = Pr2;
+}
+
+void Order::DisplayOrder()
+{
+}
+
+Order::~Order()
+{
+	cout << "delete Order" << endl;
+}
