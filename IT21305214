@@ -1,0 +1,108 @@
+//Dias A.H.S.G.
+//IT21305214
+
+
+//Payment.h
+
+#pragma once
+#include "Order.h"
+class Payment {
+private:
+	int PaymentID;
+	char PaymentMeth[10];
+	double Amount;
+	Order* Ord;
+public:
+	Payment();
+	Payment(int pPaymentID, const char pPaymentMeth[], double pAmount, Order* pOrd);
+	void DisplayPaymentDetails();
+	~Payment();
+};
+
+
+
+//Payment.cpp
+
+#include "Payment.h"
+#include "Order.h"
+#include <cstring>
+Payment::Payment()
+{
+	PaymentID = 0;
+	strcpy_s(PaymentMeth, "");
+	Amount = 0;
+	
+}
+
+Payment::Payment(int pPaymentID, const char pPaymentMeth[], double pAmount, Order* pOrd)
+{
+	PaymentID = pPaymentID;
+	strcpy_s(PaymentMeth, pPaymentMeth);
+	Amount = pAmount;
+	Ord = pOrd;
+}
+
+void Payment::DisplayPaymentDetails()
+{
+}
+
+Payment::~Payment()
+{
+}
+
+
+
+//Product.h
+
+#pragma once
+#include "registeredCustomer.h"
+class Product
+{
+private:
+	int ProductID;
+	char ProductName[20];
+	double Price;
+	char ItemCat[10];
+	RegisteredCustomer* Rg;
+
+public:
+	Product();
+	Product(int pProductID, const char pProductName[], double pPrice, const char pItemCat[], RegisteredCustomer* pRg);
+	void DisplayProductDetails();
+	~Product();
+};
+
+
+
+//Product.cpp
+
+#include "Product.h"
+#include <cstring>
+
+Product::Product()
+{
+	ProductID = 0;
+	strcpy_s(ProductName, "");
+	Price = 0;
+	strcpy_s(ItemCat, "");
+}
+
+Product::Product(int pProductID, const char pProductName[], double pPrice, const char pItemCat[], RegisteredCustomer* pRg)
+{
+	ProductID = pProductID;
+	strcpy_s(ProductName, pProductName);
+	Price = pPrice;
+	strcpy_s(ItemCat, pItemCat);
+	Rg = pRg;
+}
+
+void Product::DisplayProductDetails()
+{
+	
+}
+
+Product::~Product()
+{
+
+}
+
