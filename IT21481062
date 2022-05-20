@@ -1,0 +1,144 @@
+//Chathumi Chirathma Amarasekara
+//IT21481062
+
+//User.h
+
+#pragma once
+class User
+{
+protected:
+	int CusID;
+	char CusName[20];
+	char CusAdd[30];
+	char CusEmail[50];
+	int CusNo;
+
+public:
+	User();
+	User(int pCusID, const char pCusName[], const char pCusAdd[], const char pCusEmail[], int pCusNo);
+	void SearchProduct();
+	~User();
+};
+
+//User.cpp
+
+#include "User.h"
+#include <cstring>
+
+User::User()	//Default Constructor
+{
+	CusID = 0;
+	strcpy_s(CusName, "");
+	strcpy_s(CusAdd, "");
+	strcpy_s(CusEmail, "");
+	CusNo = 0000000000;
+}
+User::User(int pCusID, const char pCusName[], const char pCusAdd[], const char pCusEmail[], int pCusNo)	//Overloaded Constructor
+{
+	CusID = pCusID;
+	strcpy_s(CusName, pCusName);
+	strcpy_s(CusAdd, pCusAdd);
+	strcpy_s(CusEmail, pCusEmail);
+	CusNo = pCusNo;
+}
+
+void User::SearchProduct()
+{
+
+}
+
+User::~User()	//destructer
+{
+
+}
+
+//Report.h
+
+#pragma once
+#include "Order.h"
+#include "Payment.h"
+#include "Product.h"
+#define SIZE 5
+
+class Report {
+
+private:
+	Payment* pay[SIZE];
+	Order* ord[SIZE];
+	Product* item[SIZE];
+public:
+	Report();
+	Report(Payment* pPayment[], Order* pOrder[], Product* pProduct[]);
+	void PreviousOrderReport();
+	void RestockItemReport();
+	void PaymentReport();
+	~Report();
+};
+
+//Report.cpp
+
+#include "Report.h"
+
+Report::Report()
+{
+	for (int i = 0; i < SIZE; i++) {
+		pay[i] = 0;
+	}
+	for (int i = 0; i < SIZE; i++) {
+		ord[i] = 0;
+	}
+	for (int i = 0; i < SIZE; i++) {
+		item[i] = 0;
+	}
+}
+
+
+
+Report::Report(Payment* pPayment[], Order* pOrder[], Product* pProduct[])
+{
+	for (int i = 0; i < SIZE; i++) {
+		pay[i] = pPayment[i];
+	}
+	for (int i = 0; i < SIZE; i++) {
+		ord[i] = pOrder[i];
+	}
+	for (int i = 0; i < SIZE; i++) {
+		item[i] = pProduct[i];
+	}
+
+
+
+}
+
+
+
+void Report::PreviousOrderReport()
+{
+}
+
+
+
+void Report::RestockItemReport()
+{
+}
+
+
+
+void Report::PaymentReport()
+{
+}
+
+
+
+Report::~Report()
+{
+	for (int i = 0; i < SIZE; i++) {
+		delete pay[i];
+	}
+	for (int i = 0; i < SIZE; i++) {
+		delete ord[i];
+	}
+	for (int i = 0; i < SIZE; i++) {
+		delete item[i];
+	}
+}
