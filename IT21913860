@@ -1,0 +1,131 @@
+//Rashmi Nathasha 
+//It21913860
+//Guest.h
+#pragma once
+#include "User.h"
+#include "Product.h"
+#define SIZE 2
+class Guest : public User
+{
+private:
+	Product* Pr[SIZE];
+public:
+	Guest();
+	Guest(int pCusID, const char pCusName[],const char CusAdd[], const char CusEmail[], int CusNo, Product* Pr1, Product* Pr2);
+	char SearchProduct();
+	~Guest();
+};
+//Guest.cpp
+#include "Guest.h"
+#include <cstring>
+
+Guest::Guest() //Default Constructor
+{
+	CusID = 0;
+	strcpy_s(CusName, "");
+	strcpy_s(CusAdd, "");
+	strcpy_s(CusEmail, "");
+	CusNo = 0000000000;
+}
+
+Guest::Guest(int pCusID, const char pCusName[], const char pCusAdd[], const char pCusEmail[], int pCusNo, Product* Pr1, Product* Pr2)	//Overloded Constructor
+{
+	CusID = pCusID;
+	strcpy_s(CusName, pCusName);
+	strcpy_s(CusAdd, pCusAdd);
+	strcpy_s(CusEmail, pCusEmail);
+	CusNo = pCusNo;
+	Pr[0] = Pr1;
+	Pr[1] = Pr2;
+}
+
+char Guest::SearchProduct()
+{
+
+}
+
+Guest::~Guest()
+{
+
+}
+//RegisteredCustomer.h
+#pragma once
+#include "User.h"
+#include "Product.h"
+#include "Shop.h"
+#include "ShoppingCart.h"
+#define SIZE 2
+using namespace std;
+
+class RegisteredCustomer : public User
+{
+private:
+	char CusUserName[10];
+	char CusPassword[10];
+	ShoppingCart* cart;
+	Shop* shop[SIZE];
+	Product* product[SIZE];
+
+
+public:
+	RegisteredCustomer();	//default constructer
+	RegisteredCustomer(int pCusID, const char pCusName[], const char pCusAdd[],	const char pCusEmail[], int pCusNo,
+	const char pCususername[], const char pCuspassword[], ShoppingCart* pcart, Shop* shop1, Shop* shop2, Product* pr1, Product* pr2);
+	void Login();
+	void DisplayDetails();
+	void Logout();
+	~RegisteredCustomer();
+};
+//RegisteredCustomer.cpp
+#include "registeredCustomer.h"
+#include <cstring>
+
+RegisteredCustomer::RegisteredCustomer()	//Default Constructor
+{
+	CusID = 0;
+	strcpy_s(CusName, "");
+	strcpy_s(CusAdd, "");
+	strcpy_s(CusEmail, "");
+	CusNo = 0000000000;
+	strcpy(CusUserName, "");
+	strcpy(CusPassword, "");
+}
+
+RegisteredCustomer::RegisteredCustomer(int pCusID, const char pCusName[], const char pCusAdd[], const char pCusEmail[], int pCusNo,
+	const char pCususername[], const char pCuspassword[], ShoppingCart* pcart, Shop* shop1, Shop* shop2, Product* pr1, Product* pr2)
+{
+	CusID = pCusID;
+	strcpy_s(CusName, pCusName);
+	strcpy_s(CusAdd, pCusAdd);
+	strcpy_s(CusEmail, pCusEmail);
+	CusNo = pCusNo;
+	strcpy_s(CusUserName, pCususername);
+	strcpy_s(CusPassword, pCuspassword);
+	cart = pcart;
+	//shop[0] = new Shop(shop1);
+	shop[0] = shop1;
+	shop[1] = shop2;
+	product[0] = pr1;
+	product[1] = pr2;
+}
+
+
+void RegisteredCustomer::Login()
+{
+	
+}
+
+void RegisteredCustomer::Logout()
+{
+
+}
+
+void RegisteredCustomer::DisplayDetails()
+{
+
+}
+
+RegisteredCustomer::~RegisteredCustomer()	//Destructer
+{
+
+}
